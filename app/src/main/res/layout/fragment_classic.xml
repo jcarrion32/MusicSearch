@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout android:id="@+id/fragment_classic"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".fragments.ClassicFragment"
+    xmlns:app="http://schemas.android.com/apk/res-auto" >
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rv_classic"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        tools:listitem="@layout/song_list_item"/>
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
