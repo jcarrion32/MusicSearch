@@ -9,6 +9,7 @@
         <entry key="app/src/main/res/layout/fragment_classic.xml" value="0.19270833333333334" />
         <entry key="app/src/main/res/layout/fragment_pop.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_rock.xml" value="0.19270833333333334" />
+        <entry key="app/src/main/res/layout/selected_song_details.xml" value="0.20677083333333332" />
         <entry key="app/src/main/res/layout/song_list_item.xml" value="0.38697916666666665" />
       </map>
     </option>
