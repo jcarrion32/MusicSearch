@@ -5,7 +5,8 @@
     android:layout_height="match_parent"
     xmlns:tools="http://schemas.android.com/tools"
     tools:context=".fragments.ClassicFragment"
-    xmlns:app="http://schemas.android.com/apk/res-auto" >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/grey">
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_classic"

@@ -6,7 +6,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.musicsearch.databinding.SongListItemBinding
 
-class MusicListAdapter(private val list: List<MusicResults>):  RecyclerView.Adapter<MusicListAdapter.MusicListViewHolder>() {
+class MusicListAdapter(
+    private val list: List<MusicResults>,
+    private val openDetail: (MusicResults) -> Unit
+)
+    :  RecyclerView.Adapter<MusicListAdapter.MusicListViewHolder>() {
 
     inner class MusicListViewHolder(private val binding: SongListItemBinding)
         : RecyclerView.ViewHolder(binding.root){
@@ -19,7 +23,12 @@ class MusicListAdapter(private val list: List<MusicResults>):  RecyclerView.Adap
                 )
                 Glide.with(binding.ivSongPic)
                     .load(songResult.artworkUrl100)
+                    .placeholder(R.drawable.ic_loading_foreground)
                     .into(binding.ivSongPic)
+
+                binding.root.setOnClickListener{
+                    openDetail(songResult)
+                }
 
             }
 

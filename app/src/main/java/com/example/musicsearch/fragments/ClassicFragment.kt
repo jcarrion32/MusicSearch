@@ -1,14 +1,14 @@
 package com.example.musicsearch.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import com.example.musicsearch.ApiService
-import com.example.musicsearch.MusicListAdapter
-import com.example.musicsearch.MusicResponse
+import com.example.musicsearch.*
 import com.example.musicsearch.databinding.FragmentClassicBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,7 +37,7 @@ class ClassicFragment: Fragment() {
                     response: Response<MusicResponse>
                 ) {
                     if (response.isSuccessful){
-                        val userAdapter = MusicListAdapter(response.body()!!.results)
+                        val userAdapter = MusicListAdapter(response.body()!!.results, ::playSelectedSong)
                         binding.rvClassic.adapter = userAdapter
                     }
                 }
@@ -49,4 +49,17 @@ class ClassicFragment: Fragment() {
             })
 
     }
+
+    fun playSelectedSong (selectedSong: MusicResults){
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(Uri.parse(selectedSong.previewUrl), "audio/mp4")
+        startActivity(intent)
+    }
+
+//    fun openDetailFragment(selectedSong: MusicResults){
+//        parentFragmentManager.beginTransaction()
+//            .replace(R.id.vp_fragments, SongDetailFragment.createInstance(selectedSong))
+//            .addToBackStack(null)
+//            .commit()
+//    }
 }

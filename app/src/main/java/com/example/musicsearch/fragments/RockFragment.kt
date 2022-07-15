@@ -1,5 +1,7 @@
 package com.example.musicsearch.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,6 +11,7 @@ import androidx.fragment.app.Fragment
 import com.example.musicsearch.ApiService
 import com.example.musicsearch.MusicListAdapter
 import com.example.musicsearch.MusicResponse
+import com.example.musicsearch.MusicResults
 import com.example.musicsearch.databinding.FragmentRockBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,7 +40,7 @@ class RockFragment: Fragment() {
                     response: Response<MusicResponse>
                 ) {
                     if (response.isSuccessful){
-                        val userAdapter = MusicListAdapter(response.body()!!.results)
+                        val userAdapter = MusicListAdapter(response.body()!!.results, ::playSelectedSong)
                         binding.rvRock.adapter = userAdapter
                     }
                 }
@@ -48,6 +51,12 @@ class RockFragment: Fragment() {
 
             })
 
+    }
+
+    fun playSelectedSong (selectedSong: MusicResults){
+        val intent = Intent(Intent.ACTION_VIEW)
+        intent.setDataAndType(Uri.parse(selectedSong.previewUrl), "audio/mp4")
+        startActivity(intent)
     }
 
 }
